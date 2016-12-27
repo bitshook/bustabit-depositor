@@ -6,7 +6,7 @@ var lib = require('./lib');
 
 var client = new bitcoin.Client({
     host: process.env.BITCOIND_HOST,
-    port: process.env.BITCOIND_PORT || 8332,
+    port: process.env.BITCOIND_PORT || 22555,
     user: process.env.BITCOIND_USER,
     pass: process.env.BITCOIND_PASS,
     timeout: 240000

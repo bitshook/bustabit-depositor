@@ -107,7 +107,7 @@ exports.getLastBlock = function(callback) {
         if (err) return callback(err);
 
         if (results.rows.length === 0)
-            return callback(null, { height: 0, hash: '000000000019d6689c085ae165831e934ff763ae46a2a6c172b3f1b60a8ce26f' }); // genesis block
+            return callback(null, { height: 0, hash: '1a91e3dace36e2be3bf030a65679fe821aa1d6ef92e7c9902eb318182c355691' }); // genesis block
 
 
         assert(results.rows.length === 1);
@@ -143,15 +143,15 @@ exports.addDeposit = function(userId, txid, amount, callback) {
 
 
     assert(typeof amount === 'number');
-   // Amount is in bitcoins...
-    amount = Math.round(amount * 1e8);
+   // Amount is in dogecoins...
+    amount = Math.round(amount * 100);
 
 
     getClient(function(client, callback) {
         async.parallel([
             function(callback) {
                  client.query('INSERT INTO fundings(user_id, amount, bitcoin_deposit_txid, description) ' +
-                    "VALUES($1, $2, $3, 'Bitcoin Deposit')",
+                    "VALUES($1, $2, $3, 'Dogecoin Deposit')",
                 [userId, amount, txid], callback);
              },
             function(callback) {
